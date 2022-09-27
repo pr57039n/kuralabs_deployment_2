@@ -28,6 +28,21 @@ pipeline {
        
       }
     }
-   
+   stage ('Deploy') {
+      steps {
+            sh '/var/lib/jenkins/.local/bin/eb deploy {{Deployment-2-main-dev}'
+      }
+    }
+     stages {
+        stage('Notify') {
+            steps {
+            }
+        }
+    }
+    post {
+        always {
+            emailext body: 'If you get this message the application deployed and this worked.', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Successful build'
+        }
+    }
   }
- }
+}
