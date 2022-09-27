@@ -35,9 +35,8 @@ pipeline {
     }
         stage('Notify') {
             steps {
+              echo "Done"
             }
-        }
-    }
     post {
         always {
             emailext body: 'If you get this message the application deployed and this worked.', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Successful build'
