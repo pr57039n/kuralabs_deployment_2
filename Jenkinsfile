@@ -33,7 +33,7 @@ pipeline {
             sh '/var/lib/jenkins/.local/bin/eb deploy {{Deployment-2-main-dev}'
       }
     }
-     stages {
+     stage {
         stage('Notify') {
             steps {
             }
